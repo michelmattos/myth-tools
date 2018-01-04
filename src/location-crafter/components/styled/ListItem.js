@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from 'react-emotion'
 
-const Item = styled('div')`
+const ListItem = styled('div')`
   border: 1px solid black;
   padding: .5em;
 
@@ -10,5 +9,4 @@ const Item = styled('div')`
   }
 `
 
-export default ({ location = {} }) =>
-  <Item>{ location.name }</Item>
+export default ListItem
