@@ -1,8 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { css } from 'react-emotion'
+import { BrowserRouter } from 'react-router-dom'
+import LocationCrafter from './locationCrafter/LocationCrafter'
+
+const app = css`
+  font-family: Oxygen, sans-serif;
+`
+
+const App = () =>
+  <div className={app}>
+    <BrowserRouter>
+      <LocationCrafter />
+    </BrowserRouter>
+  </div>
 
 ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
