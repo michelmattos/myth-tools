@@ -1,6 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { injectState } from 'freactal'
 import { css } from 'react-emotion'
-import Button from './styled/Button'
+import ListItemButton from './styled/ListItemButton'
 import ElementList from './ElementList'
 
 const styleClass = css`
@@ -14,10 +16,22 @@ const locations = [
   { id: 2, name: 'Location 3', type: 'Custom' },
 ]
 
-const LocationsContent = () =>
+const LocationsContent = ({
+  effects: {
+    toggleElementForm
+  }
+}) =>
   <div className={styleClass}>
-    <Button>create element</Button>
     <ElementList elements={locations} />
+    <ListItemButton onClick={toggleElementForm}>
+      + element
+    </ListItemButton>
   </div>
 
-export default LocationsContent
+LocationsContent.propTypes = {
+  effects: PropTypes.shape({
+    toggleElementForm: PropTypes.func.isRequired
+  }).isRequired
+}
+
+export default injectState(LocationsContent)
