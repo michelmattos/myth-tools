@@ -1,13 +1,28 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { injectState } from 'freactal'
 import Overlay from './styled/Overlay'
 import BottomPanel from './styled/BottomPanel'
 import CategorySelectPanel from './CategorySelectPanel'
 
-const ElementForm = () =>
+const ElementForm = ({
+  effects: {
+    toggleElementForm
+  }
+}) =>
   <Overlay>
     <BottomPanel>
-      <CategorySelectPanel />
+      <CategorySelectPanel
+        onCancel={toggleElementForm}
+        onSelect={() => {}}
+      />
     </BottomPanel>
   </Overlay>
 
-export default ElementForm
+ElementForm.propTypes = {
+  effects: PropTypes.shape({
+    toggleElementForm: PropTypes.func.isRequired
+  }).isRequired
+}
+
+export default injectState(ElementForm)
