@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import { provideState, injectState } from 'freactal'
 import * as state from '../state/page'
-import Content from './styled/Content'
 import PageHeader from './PageHeader'
 import LocationsContent from './LocationsContent'
 import ElementForm from './ElementForm'
@@ -16,9 +15,9 @@ const Page = ({
 }) =>
   <div>
     <PageHeader />
-    <Content>
+    <main>
       <Route path='/locations' component={LocationsContent} />
-    </Content>
+    </main>
     {isElementFormOpen && (
       <ElementForm />
     )}

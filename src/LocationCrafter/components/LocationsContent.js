@@ -1,14 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { injectState } from 'freactal'
-import { css } from 'react-emotion'
+import Content from './styled/Content'
 import ListItemButton from './styled/ListItemButton'
 import ElementList from './ElementList'
-
-const styleClass = css`
-  display: flex;
-  flex-direction: column;
-`
 
 const locations = [
   { id: 0, name: 'Location 1', type: 'Custom' },
@@ -21,12 +16,12 @@ const LocationsContent = ({
     toggleElementForm
   }
 }) =>
-  <div className={styleClass}>
+  <Content>
     <ElementList elements={locations} />
     <ListItemButton onClick={toggleElementForm}>
       + element
     </ListItemButton>
-  </div>
+  </Content>
 
 LocationsContent.propTypes = {
   effects: PropTypes.shape({
