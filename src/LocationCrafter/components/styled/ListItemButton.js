@@ -1,9 +1,7 @@
 import styled from 'react-emotion'
+import Button from './Button'
 
-const ListItemButton = styled('button')`
-  background-color: #ddd;
-  padding: .5em;
-  text-align: center;
+const ListItemButton = styled(Button)`
   width: 100%;
 `
 
