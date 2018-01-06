@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { css } from 'react-emotion'
 import { BrowserRouter } from 'react-router-dom'
-import LocationCrafter from './location-crafter'
+import LocationCrafter from './LocationCrafter'
 import './style.css'
 
 const app = css`
