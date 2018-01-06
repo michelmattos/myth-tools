@@ -9,9 +9,8 @@ import ElementForm from './ElementForm'
 
 const Page = ({
   state: {
-    isElementFormOpen = false
-  },
-  effects
+    isElementFormOpen
+  }
 }) =>
   <div>
     <PageHeader />
@@ -25,7 +24,7 @@ const Page = ({
 
 Page.propTypes = {
   state: PropTypes.shape({
-    isElementFormOpen: PropTypes.bool
+    isElementFormOpen: PropTypes.bool.isRequired
   }).isRequired
 }
 
