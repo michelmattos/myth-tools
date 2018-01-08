@@ -5,7 +5,7 @@ import List from './styled/List'
 import ListItemButton from './styled/ListItemButton'
 import CancelButton from './styled/CancelButton'
 
-const CategorySelectPanel = ({
+const SelectTypePanel = ({
   onCancel,
   onSelect
 }) =>
@@ -33,9 +33,9 @@ const CategorySelectPanel = ({
     <CancelButton onClick={onCancel}>Cancel</CancelButton>
   </Content>
 
-CategorySelectPanel.propTypes = {
+SelectTypePanel.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired
 }
 
-export default CategorySelectPanel
+export default SelectTypePanel
