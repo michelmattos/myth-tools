@@ -5,13 +5,10 @@ import Content from './styled/Content'
 import ListItemButton from './styled/ListItemButton'
 import ElementList from './ElementList'
 
-const locations = [
-  { id: 0, name: 'Location 1', type: 'Custom' },
-  { id: 1, name: 'Location 2', type: 'Custom' },
-  { id: 2, name: 'Location 3', type: 'Custom' },
-]
-
 const LocationsContent = ({
+  state: {
+    locations
+  },
   effects: {
     toggleElementForm
   }
@@ -24,6 +21,9 @@ const LocationsContent = ({
   </Content>
 
 LocationsContent.propTypes = {
+  state: PropTypes.shape({
+    locations: PropTypes.array.isRequired
+  }),
   effects: PropTypes.shape({
     toggleElementForm: PropTypes.func.isRequired
   }).isRequired

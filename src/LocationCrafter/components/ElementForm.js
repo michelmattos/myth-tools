@@ -1,28 +1,60 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { injectState } from 'freactal'
+import { provideState, injectState } from 'freactal'
+import {
+  constants,
+  getInitialState,
+  actions,
+  selectors
+} from '../state/elementForm'
 import Overlay from './styled/Overlay'
 import BottomPanel from './styled/BottomPanel'
-import CategorySelectPanel from './CategorySelectPanel'
+import SelectTypePanel from './SelectTypePanel'
 
 const ElementForm = ({
+  state: {
+    type = null,
+    name = '',
+    unique = false
+  },
   effects: {
-    toggleElementForm
+    addLocation,
+    toggleElementForm,
+    update
   }
 }) =>
   <Overlay>
     <BottomPanel>
-      <CategorySelectPanel
-        onCancel={toggleElementForm}
-        onSelect={() => {}}
-      />
+      {type === null ? (
+        <SelectTypePanel
+          onCancel={toggleElementForm}
+          onSelect={type => update({ type })
+            .then(selectors.getElement)
+            .then(element => element && addLocation(element))
+          }
+        />
+      ) : type === constants.CUSTOM ? (
+        'Fill details'
+      ) : null}
     </BottomPanel>
   </Overlay>
 
 ElementForm.propTypes = {
+  state: PropTypes.shape({
+    type: PropTypes.string,
+    name: PropTypes.string,
+    unique: PropTypes.bool
+  }).isRequired,
   effects: PropTypes.shape({
-    toggleElementForm: PropTypes.func.isRequired
+    addLocation: PropTypes.func.isRequired,
+    toggleElementForm: PropTypes.func.isRequired,
+    update: PropTypes.func.isRequired
   }).isRequired
 }
 
-export default injectState(ElementForm)
+export default provideState({
+  initialState: getInitialState,
+  effects: {
+    update: (_, fields) => state => actions.update(state, fields)
+  }
+})(injectState(ElementForm))
