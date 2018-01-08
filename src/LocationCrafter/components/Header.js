@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Header from './styled/Header'
+import PageHeader from './styled/PageHeader'
 import Title from './styled/Title'
 import Nav from './styled/Nav'
 
-const PageHeader = () =>
-  <Header>
+const Header = () =>
+  <PageHeader>
     <Title>Location Crafter</Title>
     <Nav>
       <Link to='/locations'>Locations</Link>
@@ -14,6 +14,6 @@ const PageHeader = () =>
       {' | '}
       <Link to='/objects'>Objects</Link>
     </Nav>
-  </Header>
+  </PageHeader>
 
-export default PageHeader
+export default Header

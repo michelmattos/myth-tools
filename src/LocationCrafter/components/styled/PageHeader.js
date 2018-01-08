@@ -1,8 +1,8 @@
 import styled from 'react-emotion'
 
-const Header = styled('header')`
+const PageHeader = styled('header')`
   background-color: #00b6ff;
   padding: 1em;
 `
 
-export default Header
+export default PageHeader
