@@ -2,35 +2,35 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 import { provideState, injectState } from 'freactal'
-import * as state from '../state/page'
-import PageHeader from './PageHeader'
+import { getInitialState, actions } from '../state/locationCrafter'
+import Page from './styled/Page'
+import Header from './Header'
 import LocationsContent from './LocationsContent'
 import ElementForm from './ElementForm'
 
-const Page = ({
+const LocationCrafter = ({
   state: {
     isElementFormOpen
   }
 }) =>
-  <div>
-    <PageHeader />
+  <Page>
+    <Header />
     <main>
       <Route path='/locations' component={LocationsContent} />
     </main>
-    {isElementFormOpen && (
-      <ElementForm />
-    )}
-  </div>
+    {isElementFormOpen && <ElementForm />}
+  </Page>
 
-Page.propTypes = {
+LocationCrafter.propTypes = {
   state: PropTypes.shape({
     isElementFormOpen: PropTypes.bool.isRequired
   }).isRequired
 }
 
 export default provideState({
-  initialState: state.getInitialState,
+  initialState: getInitialState,
   effects: {
-    toggleElementForm: () => state.toggleElementForm
+    toggleElementForm: () => actions.toggleElementForm,
+    addLocation: (_, location) => (state) => actions.addLocation(state, location)
   }
-})(injectState(Page))
+})(injectState(LocationCrafter))

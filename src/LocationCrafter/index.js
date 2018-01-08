@@ -1,3 +1,3 @@
-import Page from './components/Page'
+import LocationCrafter from './components/LocationCrafter'
 
-export default Page
+export default LocationCrafter
