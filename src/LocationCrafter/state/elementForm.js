@@ -12,7 +12,7 @@ export const constants = Object.freeze({
 
 export const getInitialState = () => ({
   type: null,
-  name: null,
+  name: '',
   unique: false
 })
 
@@ -27,7 +27,7 @@ export const actions = {
 export const selectors = {
   getElement: (state) => {
     if (state.type === constants.CUSTOM) {
-      if (state.name !== null) {
+      if (state.name !== '') {
         return {
           type: state.type,
           name: state.name,
