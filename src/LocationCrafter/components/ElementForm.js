@@ -10,6 +10,7 @@ import {
 import Overlay from './styled/Overlay'
 import BottomPanel from './styled/BottomPanel'
 import SelectTypePanel from './SelectTypePanel'
+import ElementFieldsPanel from './ElementFieldsPanel'
 
 const ElementForm = ({
   state: {
@@ -34,7 +35,7 @@ const ElementForm = ({
           }
         />
       ) : type === constants.CUSTOM ? (
-        'Fill details'
+        <ElementFieldsPanel />
       ) : null}
     </BottomPanel>
   </Overlay>
