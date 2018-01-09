@@ -1,14 +1,17 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import Content from './styled/Content'
 import List from './styled/List'
 import ListItemButton from './styled/ListItemButton'
 import CancelButton from './styled/CancelButton'
+import type { Type } from '../types'
 
-const SelectTypePanel = ({
-  onCancel,
-  onSelect
-}) =>
+type Props = {
+  onCancel: () => any,
+  onSelect: (type: Type) => any,
+}
+
+const SelectType = ({ onCancel, onSelect }: Props) =>
   <Content>
     <List>
       <ListItemButton onClick={() => onSelect('CUSTOM')}>
@@ -33,9 +36,4 @@ const SelectTypePanel = ({
     <CancelButton onClick={onCancel}>Cancel</CancelButton>
   </Content>
 
-SelectTypePanel.propTypes = {
-  onCancel: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired
-}
-
-export default SelectTypePanel
+export default SelectType

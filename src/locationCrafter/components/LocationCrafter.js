@@ -6,19 +6,23 @@ import { getInitialState, actions } from '../state/locationCrafter'
 import Page from './styled/Page'
 import Header from './Header'
 import LocationsContent from './LocationsContent'
-import ElementForm from './ElementForm'
+import EditElement from './EditElement'
 
 const LocationCrafter = ({
   state: {
-    isElementFormOpen
-  }
+    isElementFormOpen,
+  },
+  effects: {
+    toggleElementForm,
+    addLocation,
+  },
 }) =>
   <Page>
     <Header />
     <main>
       <Route path='/locations' component={LocationsContent} />
     </main>
-    {isElementFormOpen && <ElementForm />}
+    {isElementFormOpen && <EditElement onCancel={toggleElementForm} onSave={addLocation} />}
   </Page>
 
 LocationCrafter.propTypes = {
