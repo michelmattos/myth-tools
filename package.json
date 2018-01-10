@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "emotion": "^8.0.12",
-    "freactal": "^2.0.0",
     "react": "^16.2.0",
     "react-beautiful-dnd": "^3.0.0",
     "react-dom": "^16.2.0",
