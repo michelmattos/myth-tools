@@ -9,24 +9,42 @@ import type { Element, UnsavedElement } from '../types'
 
 type State = {
   locations: Array<Element>,
+  encounters: Array<Element>,
+  objects: Array<Element>,
+}
+
+const addToList = (list: Array<Element>, element: UnsavedElement) => {
+  const savedElement = {
+    ...element,
+    id: list.length,
+  }
+  return [...list, savedElement]
 }
 
 class LocationCrafter extends React.Component<{}, State> {
   state = {
-    locations: []
+    locations: [],
+    encounters: [],
+    objects: [],
   }
 
   addLocation = (location: UnsavedElement) => {
-    const { locations } = this.state
-    const savedLocation = {
-      ...location,
-      id: locations.length,
-    }
-    this.setState({ locations: [...locations, savedLocation] })
+    const locations = addToList(this.state.locations, location)
+    this.setState({ locations })
+  }
+
+  addEncounter = (encounter: UnsavedElement) => {
+    const encounters = addToList(this.state.encounters, encounter)
+    this.setState({ encounters })
+  }
+
+  addObject = (object: UnsavedElement) => {
+    const objects = addToList(this.state.objects, object)
+    this.setState({ objects })
   }
 
   render () {
-    const { locations } = this.state
+    const { locations, encounters, objects } = this.state
     return (
       <Page>
         <Header />
@@ -35,6 +53,18 @@ class LocationCrafter extends React.Component<{}, State> {
             path='/locations'
             render={() =>
               <ElementList elements={locations} onElementCreate={this.addLocation} />
+            }
+          />
+          <Route
+            path='/encounters'
+            render={() =>
+              <ElementList elements={encounters} onElementCreate={this.addEncounter} />
+            }
+          />
+          <Route
+            path='/objects'
+            render={() =>
+              <ElementList elements={objects} onElementCreate={this.addObject} />
             }
           />
         </main>
