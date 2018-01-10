@@ -4,7 +4,6 @@ import { Route } from 'react-router-dom'
 import Page from './styled/Page'
 import Header from './Header'
 import ElementList from './ElementList'
-import EditElement from './EditElement'
 import type { Element, UnsavedElement } from '../types'
 
 type State = {

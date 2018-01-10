@@ -1,6 +1,5 @@
 // @flow
 import React from 'react'
-import { injectState } from 'freactal'
 import Content from './styled/Content'
 import List from './styled/List'
 import ListItemButton from './styled/ListItemButton'
