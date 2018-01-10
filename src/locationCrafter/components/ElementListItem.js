@@ -1,12 +1,13 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import ListItem from './styled/ListItem'
+import type { Element } from '../types'
 
-const ElementListItem = ({ element = {} }) =>
-  <ListItem>{ element.name} {element.unique && '(U)'}</ListItem>
-
-ElementListItem.propTypes = {
-  element: PropTypes.object
+type Props = {
+  element: Element
 }
+
+const ElementListItem = ({ element }: Props) =>
+  <ListItem>{element.name} {element.unique && '(U)'}</ListItem>
 
 export default ElementListItem

@@ -7,7 +7,7 @@ import Overlay from './styled/Overlay'
 import BottomPanel from './styled/BottomPanel'
 import SelectType from './SelectType'
 import EditDetails from './EditDetails'
-import type { Type, Element } from '../types'
+import type { Type, Element, UnsavedElement } from '../types'
 
 type State = {
   type: Type | null,
@@ -17,7 +17,7 @@ type State = {
 
 type Props = {
   onCancel: () => any,
-  onSave: (location: Element) => any,
+  onSave: (location: Element | UnsavedElement) => any,
 }
 
 class EditElement extends React.Component<Props, State> {

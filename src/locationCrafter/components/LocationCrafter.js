@@ -1,40 +1,46 @@
+// @flow
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
-import { provideState, injectState } from 'freactal'
-import { getInitialState, actions } from '../state/locationCrafter'
 import Page from './styled/Page'
 import Header from './Header'
-import LocationsContent from './LocationsContent'
+import ElementList from './ElementList'
 import EditElement from './EditElement'
+import type { Element, UnsavedElement } from '../types'
 
-const LocationCrafter = ({
-  state: {
-    isElementFormOpen,
-  },
-  effects: {
-    toggleElementForm,
-    addLocation,
-  },
-}) =>
-  <Page>
-    <Header />
-    <main>
-      <Route path='/locations' component={LocationsContent} />
-    </main>
-    {isElementFormOpen && <EditElement onCancel={toggleElementForm} onSave={addLocation} />}
-  </Page>
-
-LocationCrafter.propTypes = {
-  state: PropTypes.shape({
-    isElementFormOpen: PropTypes.bool.isRequired
-  }).isRequired
+type State = {
+  locations: Array<Element>,
 }
 
-export default provideState({
-  initialState: getInitialState,
-  effects: {
-    toggleElementForm: () => actions.toggleElementForm,
-    addLocation: (_, location) => (state) => actions.addLocation(state, location)
+class LocationCrafter extends React.Component<{}, State> {
+  state = {
+    locations: []
   }
-})(injectState(LocationCrafter))
+
+  addLocation = (location: UnsavedElement) => {
+    const { locations } = this.state
+    const savedLocation = {
+      ...location,
+      id: locations.length,
+    }
+    this.setState({ locations: [...locations, savedLocation] })
+  }
+
+  render () {
+    const { locations } = this.state
+    return (
+      <Page>
+        <Header />
+        <main>
+          <Route
+            path='/locations'
+            render={() =>
+              <ElementList elements={locations} onElementCreate={this.addLocation} />
+            }
+          />
+        </main>
+      </Page>
+    )
+  }
+}
+
+export default LocationCrafter
