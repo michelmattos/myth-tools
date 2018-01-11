@@ -1,18 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { css } from 'react-emotion'
 import PageHeader from './styled/PageHeader'
 import Title from './styled/Title'
 import Nav from './styled/Nav'
+
+const active = css`
+  text-decoration: none;
+  color: white;
+`
 
 const Header = () =>
   <PageHeader>
     <Title>Location Crafter</Title>
     <Nav>
-      <Link to='/locations'>Locations</Link>
+      <NavLink to='/locations' activeClassName={active}>Locations</NavLink>
       {' | '}
-      <Link to='/encounters'>Encounters</Link>
+      <NavLink to='/encounters' activeClassName={active}>Encounters</NavLink>
       {' | '}
-      <Link to='/objects'>Objects</Link>
+      <NavLink to='/objects' activeClassName={active}>Objects</NavLink>
     </Nav>
   </PageHeader>
 
