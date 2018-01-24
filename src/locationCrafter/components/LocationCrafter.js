@@ -4,20 +4,12 @@ import { Route } from 'react-router-dom'
 import Page from './styled/Page'
 import Header from './Header'
 import ElementList from './ElementList'
-import type { Element, UnsavedElement } from '../types'
+import type { Element } from '../types'
 
 type State = {
   locations: Array<Element>,
   encounters: Array<Element>,
   objects: Array<Element>,
-}
-
-const addToList = (list: Array<Element>, element: UnsavedElement) => {
-  const savedElement = {
-    ...element,
-    id: list.length,
-  }
-  return [...list, savedElement]
 }
 
 class LocationCrafter extends React.Component<{}, State> {
@@ -27,19 +19,20 @@ class LocationCrafter extends React.Component<{}, State> {
     objects: [],
   }
 
-  addLocation = (location: UnsavedElement) => {
-    const locations = addToList(this.state.locations, location)
-    this.setState({ locations })
-  }
+  saveElementIn = (category: string) => (element: Element) => {
+    let elements = this.state[category]
 
-  addEncounter = (encounter: UnsavedElement) => {
-    const encounters = addToList(this.state.encounters, encounter)
-    this.setState({ encounters })
-  }
+    if (element.id) {
+      elements = elements.map(
+        item => item.id === element.id ? element : item
+      )
+    }
+    else {
+      const newElement = { ...element, id: elements.length }
+      elements = [...elements, newElement]
+    }
 
-  addObject = (object: UnsavedElement) => {
-    const objects = addToList(this.state.objects, object)
-    this.setState({ objects })
+    this.setState({ [category]: elements })
   }
 
   render () {
@@ -51,19 +44,28 @@ class LocationCrafter extends React.Component<{}, State> {
           <Route
             path='/locations'
             render={() =>
-              <ElementList elements={locations} onElementCreate={this.addLocation} />
+              <ElementList
+                elements={locations}
+                onSave={this.saveElementIn('locations')}
+              />
             }
           />
           <Route
             path='/encounters'
             render={() =>
-              <ElementList elements={encounters} onElementCreate={this.addEncounter} />
+              <ElementList
+                elements={encounters}
+                onSave={this.saveElementIn('encounters')}
+              />
             }
           />
           <Route
             path='/objects'
             render={() =>
-              <ElementList elements={objects} onElementCreate={this.addObject} />
+              <ElementList
+                elements={objects}
+                onSave={this.saveElementIn('objects')}
+              />
             }
           />
         </main>
