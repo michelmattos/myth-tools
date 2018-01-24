@@ -4,10 +4,13 @@ import ListItem from './styled/ListItem'
 import type { Element } from '../types'
 
 type Props = {
-  element: Element
+  element: Element,
+  onClick: () => any,
 }
 
-const ElementListItem = ({ element }: Props) =>
-  <ListItem>{element.name} {element.unique && '(U)'}</ListItem>
+const ElementListItem = ({ element, onClick }: Props) =>
+  <ListItem onClick={onClick}>
+    {element.name} {element.unique && '(U)'}
+  </ListItem>
 
 export default ElementListItem
