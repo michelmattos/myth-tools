@@ -47,7 +47,7 @@ const EditDetails = ({ values, onValuesChange, onCancel, onSave }: Props) =>
       <InputField horizontal>
         <input
           type='checkbox'
-          value={values.unique}
+          checked={values.unique}
           onChange={evt => onValuesChange({ ...values, unique: evt.target.checked })}
         />
         <span>Unique</span>
