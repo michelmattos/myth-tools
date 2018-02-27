@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
-import upperFirst from 'lodash/upperFirst'
-import capitalize from 'lodash/capitalize'
+import upperFirst from 'lodash-es/upperFirst'
+import capitalize from 'lodash-es/capitalize'
 import Run from '../../common/components/Run'
 import Overlay from './styled/Overlay'
 import BottomPanel from './styled/BottomPanel'
