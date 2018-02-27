@@ -4,7 +4,7 @@ import Content from './styled/Content'
 import List from './styled/List'
 import ListItemButton from './styled/ListItemButton'
 import ElementListItem from './ElementListItem'
-import EditElement from './EditElement'
+import ElementEditor from './ElementEditor'
 import type { Element } from '../types'
 
 type Props = {
@@ -56,7 +56,7 @@ class ElementList extends React.Component<Props, State> {
           + element
         </ListItemButton>
         {showElementForm && (
-          <EditElement
+          <ElementEditor
             element={selectedElement}
             onCancel={this.toggleElementForm}
             onSave={element => {

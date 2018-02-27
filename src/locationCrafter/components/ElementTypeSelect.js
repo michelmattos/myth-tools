@@ -11,7 +11,7 @@ type Props = {
   onSelect: (type: Type) => any,
 }
 
-const SelectType = ({ onCancel, onSelect }: Props) =>
+const ElementTypeSelect = ({ onCancel, onSelect }: Props) =>
   <Content>
     <List>
       <ListItemButton onClick={() => onSelect('CUSTOM')}>
@@ -36,4 +36,4 @@ const SelectType = ({ onCancel, onSelect }: Props) =>
     <CancelButton onClick={onCancel}>Cancel</CancelButton>
   </Content>
 
-export default SelectType
+export default ElementTypeSelect

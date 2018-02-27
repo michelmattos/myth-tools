@@ -5,8 +5,8 @@ import capitalize from 'lodash/capitalize'
 import Run from '../../common/components/Run'
 import Overlay from './styled/Overlay'
 import BottomPanel from './styled/BottomPanel'
-import SelectType from './SelectType'
-import EditDetails from './EditDetails'
+import ElementTypeSelect from './ElementTypeSelect'
+import ElementDetailsForm from './ElementDetailsForm'
 import type { Type, Element } from '../types'
 
 type State = {
@@ -29,7 +29,7 @@ const initializeState = (element) => ({
   unique: element ? element.unique : false,
 })
 
-class EditElement extends React.Component<Props, State> {
+class ElementEditor extends React.Component<Props, State> {
   state = initializeState(this.props.element)
 
   save = () => {
@@ -53,12 +53,12 @@ class EditElement extends React.Component<Props, State> {
       <Overlay>
         <BottomPanel>
           {type === null ? (
-            <SelectType
+            <ElementTypeSelect
               onCancel={this.props.onCancel}
               onSelect={type => this.setState({ type })}
             />
           ) : type === 'CUSTOM' ? (
-            <EditDetails
+            <ElementDetailsForm
               values={{ name, unique }}
               onValuesChange={values => this.setState(values)}
               onCancel={this.props.onCancel}
@@ -73,4 +73,4 @@ class EditElement extends React.Component<Props, State> {
   }
 }
 
-export default EditElement
+export default ElementEditor

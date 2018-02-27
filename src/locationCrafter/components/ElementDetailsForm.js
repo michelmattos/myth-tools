@@ -27,7 +27,7 @@ const styleClass = css`
   }
 `
 
-const EditDetails = ({ values, onValuesChange, onCancel, onSave }: Props) =>
+const ElementDetailsForm = ({ values, onValuesChange, onCancel, onSave }: Props) =>
   <Content>
     <Form
       action='#'
@@ -59,4 +59,4 @@ const EditDetails = ({ values, onValuesChange, onCancel, onSave }: Props) =>
     </Form>
   </Content>
 
-export default EditDetails
+export default ElementDetailsForm

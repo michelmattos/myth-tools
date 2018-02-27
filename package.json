@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "emotion": "^8.0.12",
+    "lodash-es": "^4.17.5",
     "react": "^16.2.0",
     "react-beautiful-dnd": "^3.0.0",
     "react-dom": "^16.2.0",
