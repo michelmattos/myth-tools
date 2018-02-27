@@ -19,7 +19,7 @@ class LocationCrafter extends React.Component<{}, State> {
     objects: [],
   }
 
-  saveElementIn = (category: string) => (element: Element) => {
+  saveElementIn = (category: $Keys<State>) => (element: Element) => {
     let elements = this.state[category]
 
     if (element.id) {
