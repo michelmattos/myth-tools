@@ -14,19 +14,19 @@ type Props = {
 
 type State = {
   showElementForm: boolean,
-  selectedElement: Element | null,
+  selectedElement?: Element,
 }
 
 class ElementList extends React.Component<Props, State> {
   state = {
     showElementForm: false,
-    selectedElement: null
+    selectedElement: undefined
   }
 
   toggleElementForm = () => {
     this.setState({
       showElementForm: !this.state.showElementForm,
-      selectedElement: null,
+      selectedElement: undefined,
     })
   }
 
