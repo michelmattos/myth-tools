@@ -2,7 +2,7 @@
 import React from 'react'
 import Overlay from './styled/Overlay'
 import BottomPanel from './styled/BottomPanel'
-import ElementTypeSelect from './ElementTypeSelect'
+import ElementTypeSelector from './ElementTypeSelector'
 import ElementDetailsForm from './ElementDetailsForm'
 import type { Type, Element } from '../types'
 
@@ -61,7 +61,7 @@ class ElementEditor extends React.Component<Props, State> {
       <Overlay>
         <BottomPanel>
           {step === 'SELECT_TYPE' &&
-            <ElementTypeSelect
+            <ElementTypeSelector
               onCancel={this.props.onCancel}
               onSelect={type => this.updateFields({type})}
             />
