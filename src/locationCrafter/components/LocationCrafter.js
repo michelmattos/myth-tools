@@ -1,6 +1,8 @@
 // @flow
 import React from 'react'
 import { Route } from 'react-router-dom'
+import capitalize from 'lodash-es/capitalize'
+import upperFirst from 'lodash-es/upperFirst'
 import Page from './styled/Page'
 import Header from './Header'
 import ElementList from './ElementList'
@@ -20,19 +22,12 @@ class LocationCrafter extends React.Component<{}, State> {
   }
 
   saveElementIn = (category: $Keys<State>) => (element: Element) => {
-    let elements = this.state[category]
-
-    if (element.id) {
-      elements = elements.map(
-        item => item.id === element.id ? element : item
-      )
-    }
-    else {
-      const newElement = { ...element, id: elements.length }
-      elements = [...elements, newElement]
-    }
-
-    this.setState({ [category]: elements })
+    const elements = this.state[category]
+    this.setState({
+      [category]: element.id !== undefined
+        ? elements.map(updateElement(element))
+        : elements.concat(createElement(element, elements.length))
+    })
   }
 
   render () {
@@ -71,6 +66,21 @@ class LocationCrafter extends React.Component<{}, State> {
         </main>
       </Page>
     )
+  }
+}
+
+function updateElement (updatedElement: Element) {
+  return (element: Element) =>
+    updatedElement.id === element.id ? updatedElement : element
+}
+
+function createElement (newElement: Element, id: number) {
+  return {
+    ...newElement,
+    id,
+    name: newElement.type === 'CUSTOM'
+      ? upperFirst(newElement.name)
+      : capitalize(newElement.type)
   }
 }
 
