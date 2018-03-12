@@ -5,6 +5,7 @@
   "dependencies": {
     "emotion": "^9.0.2",
     "lodash-es": "^4.17.7",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-beautiful-dnd": "^5.0.0",
     "react-dom": "^16.2.0",
