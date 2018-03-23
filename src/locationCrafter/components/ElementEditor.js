@@ -14,9 +14,9 @@ type Props = {
 }
 
 const ElementEditor = (props: Props) => (
-  <Overlay>
-    <WithElementFormState onSave={props.onSave}>
-      {({ name, unique, step, onChange, onSubmit }) =>
+  <WithElementFormState onSave={props.onSave}>
+    {({ name, unique, step, onChange, onSubmit }) =>
+      <Overlay>
         <BottomPanel>
           {step === 'SELECT_TYPE' &&
             <ElementTypeSelector
@@ -33,9 +33,9 @@ const ElementEditor = (props: Props) => (
             />
           }
         </BottomPanel>
-      }
-    </WithElementFormState>
-  </Overlay>
+      </Overlay>
+    }
+  </WithElementFormState>
 )
 
 export default ElementEditor
