@@ -37,6 +37,11 @@ module.exports = function (wallaby) {
       wallaby.testFramework.configure(jestConfig);
     },
 
-    testFramework: 'jest'
+    testFramework: 'jest',
+
+    filesWithNoCoverageCalculated: [
+      'src/**/components/styled/**/*.js',
+      'src/setupTests.js'
+    ]
   };
 }
