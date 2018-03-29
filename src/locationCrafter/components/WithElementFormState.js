@@ -54,7 +54,7 @@ type Props = {
 }
 
 type RenderProps = State & {
-  onChange: $PropertyType<WithElementFormState, 'updateFields'>,
+  onChange: $PropertyType<WithElementFormState, 'onChange'>,
   onSubmit: () => void,
 }
 
