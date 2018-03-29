@@ -7,7 +7,7 @@ import ElementListItem from './ElementListItem'
 import ElementEditor from './ElementEditor'
 import type { Element } from '../types'
 
-type Props = {
+export type Props = {
   elements: Array<Element>,
   onSave: (element: Element) => any,
 }
@@ -52,7 +52,7 @@ class ElementList extends React.Component<Props, State> {
             />
           )}
         </List>
-        <ListItemButton onClick={this.toggleElementForm}>
+        <ListItemButton data-test='add-element' onClick={this.toggleElementForm}>
           + element
         </ListItemButton>
         {showElementForm && (
