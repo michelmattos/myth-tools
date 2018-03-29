@@ -30,7 +30,7 @@ test('should render an editor when a custom element is selected', () => {
 })
 
 test('should not render an editor when a non custom element is selected', () => {
-  const nonCustomElement = { id: 0, type: 'unknown', name: 'House', unique: true }
+  const nonCustomElement = { id: 0, type: 'NONE', name: 'None', unique: false }
   const props = createProps({ elements: [nonCustomElement] })
   const wrapper = shallow(<ElementList {...props} />)
   expect(wrapper.find('ElementEditor')).not.toExist()
