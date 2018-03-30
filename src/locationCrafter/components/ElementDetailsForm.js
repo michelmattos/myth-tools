@@ -30,6 +30,7 @@ const styleClass = css`
 const ElementDetailsForm = ({ values, onValuesChange, onCancel, onSave }: Props) =>
   <Content>
     <Form
+      data-test='form'
       action='#'
       onSubmit={evt => {
         evt.preventDefault()
@@ -58,5 +59,9 @@ const ElementDetailsForm = ({ values, onValuesChange, onCancel, onSave }: Props)
       </div>
     </Form>
   </Content>
+
+export const testUtils = {
+  formSelector: 'form[data-test="form"]',
+}
 
 export default ElementDetailsForm

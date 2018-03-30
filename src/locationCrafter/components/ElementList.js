@@ -47,6 +47,7 @@ class ElementList extends React.Component<Props, State> {
           {elements.map(element =>
             <ElementListItem
               key={element.id}
+              data-test='element'
               element={element}
               onClick={() => this.selectElement(element)}
             />
@@ -57,6 +58,7 @@ class ElementList extends React.Component<Props, State> {
         </ListItemButton>
         {showElementForm && (
           <ElementEditor
+            data-test='editor'
             element={selectedElement}
             onCancel={this.toggleElementForm}
             onSave={element => {
@@ -68,6 +70,12 @@ class ElementList extends React.Component<Props, State> {
       </Content>
     )
   }
+}
+
+export const testUtils = {
+  elementSelector: '[data-test="element"]',
+  addElementSelector: '[data-test="add-element"]',
+  editorSelector: '[data-test="editor"]',
 }
 
 export default ElementList
