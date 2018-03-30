@@ -6,9 +6,12 @@ class WithElementFormState extends React.Component<Props, State> {
   state = initializeState(this.props.element)
 
   onChange = (fields: { type?: Type, name?: string, unique?: boolean }) => {
-    this.setState({
-      ...fields,
-      step: fields.type ? 'FILL_DETAILS' : 'SELECT_TYPE'
+    this.setState(prevState => {
+      const nextState = { ...prevState, ...fields }
+      return {
+        ...nextState,
+        step: nextState.type ? 'FILL_DETAILS' : 'SELECT_TYPE',
+      }
     })
   }
 

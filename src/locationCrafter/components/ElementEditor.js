@@ -14,7 +14,10 @@ type Props = {
 }
 
 const ElementEditor = (props: Props) => (
-  <WithElementFormState onSave={props.onSave}>
+  <WithElementFormState
+    element={props.element}
+    onSave={props.onSave}
+  >
     {({ name, unique, step, onChange, onSubmit }) =>
       <Overlay>
         <BottomPanel>
