@@ -23,18 +23,18 @@ class ElementList extends React.Component<Props, State> {
     selectedElement: undefined
   }
 
-  toggleElementForm = () => {
+  closeEditor = () => {
     this.setState({
-      showElementForm: !this.state.showElementForm,
+      showElementForm: false,
       selectedElement: undefined,
     })
   }
 
-  selectElement = (selectedElement: Element) => {
-    if (selectedElement.type !== 'CUSTOM') return
+  openEditor = (element?: Element) => {
+    if (element && element.type !== 'CUSTOM') return
     this.setState({
-      selectedElement,
       showElementForm: true,
+      selectedElement: element,
     })
   }
 
@@ -49,20 +49,20 @@ class ElementList extends React.Component<Props, State> {
               key={element.id}
               data-test='element'
               element={element}
-              onClick={() => this.selectElement(element)}
+              onClick={() => this.openEditor(element)}
             />
           )}
         </List>
-        <ListItemButton data-test='add-element' onClick={this.toggleElementForm}>
+        <ListItemButton data-test='add-element' onClick={this.openEditor}>
           + element
         </ListItemButton>
         {showElementForm && (
           <ElementEditor
             data-test='editor'
             element={selectedElement}
-            onCancel={this.toggleElementForm}
+            onCancel={this.closeEditor}
             onSave={element => {
-              this.toggleElementForm()
+              this.closeEditor()
               onSave(element)
             }}
           />
